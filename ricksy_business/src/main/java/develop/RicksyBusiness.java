@@ -22,8 +22,7 @@
  * da de alta a un invitado/a automáticamente cargan 
  * en la tarjeta del invitado/a el coste de ambos servicios. 
  */
-
-package ricksy.business;
+package develop;
 
 public class RicksyBusiness {
     
@@ -34,14 +33,10 @@ public class RicksyBusiness {
          * Crea una tarjeta de crédito para Abradolph.
          * Como es una AndromedanExpress
          * el crédito inicial es de 3000 EZIS
-         */
-
+         * */
         CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
-        
-        System.out.println("\n" + "Tarjeta de Abradolph" + "\n" + 
-                                  "===================="        );
+        System.out.println("\n" + "Tarjeta de Abradolph" + "\n" + "====================");
         System.out.println(abradolph);
-
         /**
          * Construye el componente de reserva de Ovnis.
          * Recibe el objeto tarjeta de crédito del invitado/a
@@ -50,8 +45,7 @@ public class RicksyBusiness {
          * Si hay saldo suficiente se reserva un UberOvni
          * de los que estén libres.
          * El coste del ovni es de 500 EZIs.
-         */
-
+        */
         UfosPark ufosPark = new UfosPark();
 
         // Da de alta en la flota de ovnis 2 UFOS.
@@ -65,10 +59,9 @@ public class RicksyBusiness {
         ufosPark.dispatch(abradolph);
 
         // Mostramos el ID del ovni asignado a Abradolph
-        System.out.println("\nOvni de Abradolph\n" + 
-                             "=================");
+        System.out.println("\nOvni de Abradolph\n" + "=================");
         System.out.println(ufosPark.getUfoOf(abradolph.number()));
-       
+
         // Mostramos el credito de la tarjeta de Abradolph
         System.out.println("Credito de Abradolph: " + abradolph.credit());
 
@@ -76,8 +69,7 @@ public class RicksyBusiness {
         // El sistema detecta que ya tiene uno 
         // e ignora la petición.
 
-        System.out.println("\nAbradolph quiere otro ovni\n" + 
-                             "==========================");
+        System.out.println("\nAbradolph quiere otro ovni\n" + "==========================");
         ufosPark.dispatch(abradolph);
         System.out.println("Su credito no ha cambiado: " + abradolph.credit());
         System.out.println("Ovni de Abradolph: " + ufosPark.getUfoOf(abradolph.number()));
@@ -87,8 +79,7 @@ public class RicksyBusiness {
         // Intenta reservarlo y el componente de reserva de ovnis
         // no le asigna ninguno.
 
-        System.out.println("\nLLega GearHead!\n" + 
-                             "===============");
+        System.out.println("\nLLega GearHead!\n" +  "===============");
         CreditCard gearHead = new CreditCard("Gearhead", "8888888888888888");
 
         gearHead.pay(3000); // le vacían la cartera
@@ -100,8 +91,7 @@ public class RicksyBusiness {
         // Squanchy deja su ovni reservado
         // antes de irse a squanchear
 
-        System.out.println("\nLLega Squanchy!\n" + 
-                             "==============");
+        System.out.println("\nLLega Squanchy!\n" + "==============");
         CreditCard squanchy = new CreditCard("Squanchy", "4444444444444444");
         ufosPark.dispatch(squanchy);
         System.out.println("Su credito es: " + squanchy.credit());
@@ -110,8 +100,7 @@ public class RicksyBusiness {
         // Morty quiere un ovni para huir de la fiesta
         // pero ya no queda ninguno disponible
 
-        System.out.println("\nAlgun ovni para Morty?\n" + 
-                             "======================");
+        System.out.println("\nAlgun ovni para Morty?\n" + "======================");
         CreditCard morty = new CreditCard("Morty", "0000000000000000");
         ufosPark.dispatch(morty);
         System.out.println("Su credito no ha cambiado: " + morty.credit());
@@ -120,8 +109,7 @@ public class RicksyBusiness {
         // Metemos un ovni más en la flota de ovnis
         // y mostramos la flota por consola
 
-        System.out.println("\nFlota de ovnis\n" + 
-                             "==============");
+        System.out.println("\nFlota de ovnis\n" + "==============");
         ufosPark.add("trex");
         System.out.println(ufosPark);
 
@@ -130,26 +118,22 @@ public class RicksyBusiness {
          * Construye el dispensador de packs de bienvenida.
          * Indica el numero de unidades y el coste de cada
          * uno de ellos, que es de 50 EZIs
-         */
-
+        */
         CrystalExpender packExpender = new CrystalExpender(3, 50);
 
         // Muestra el total de packs y su precio unidad
-        System.out.println("\nPacks\n" + 
-                             "=====");
+        System.out.println("\nPacks\n" + "=====");
         System.out.println(packExpender);
 
         // Abradolph compra su pack de bienvenida
         packExpender.dispatch(abradolph);
 
-        System.out.println("\nAbradolph compra su pack\n" + 
-                             "========================");
+        System.out.println("\nAbradolph compra su pack\n" + "========================");
         System.out.println("Packs\n" + packExpender);
         System.out.println("Credito de Abradolph: " + abradolph.credit());
 
         // El pobre GerHead no tiene crédito para comprar su pack
-        System.out.println("\nGearHead sin credito para su pack\n" + 
-                             "=================================");
+        System.out.println("\nGearHead sin credito para su pack\n" + "=================================");
         packExpender.dispatch(gearHead);
         System.out.println("Packs\n" + packExpender);
         System.out.println("Credito de GearHead: " + gearHead.credit());
@@ -163,8 +147,7 @@ public class RicksyBusiness {
          * Para ello, crea el componente receptivo
          * y registra (añade) los componentes UfosPark
          * y CrystalDispatcher al receptivo
-         */
-
+        */
         Receptivo receptivo = new Receptivo();
         receptivo.registra(packExpender);
         receptivo.registra(ufosPark);
@@ -175,32 +158,28 @@ public class RicksyBusiness {
 
         // Squanchy reserva ovni (ya tiene) y pack
 
-        System.out.println("\nLLega Squanchy!\n" + 
-                             "===============");
+        System.out.println("\nLLega Squanchy!\n" + "===============");
         receptivo.dispatch(squanchy);
         mostrarReserva(squanchy, packExpender, ufosPark);
 
         // Gearhead reserva ovni y pack.
         // No tiene crédito.
 
-        System.out.println("\nLLega GearHead!\n" + 
-                             "===============");
+        System.out.println("\nLLega GearHead!\n" + "===============");
         gearHead.pay(3000); // no tiene crédito
         receptivo.dispatch(gearHead);
         mostrarReserva(gearHead, packExpender, ufosPark);
 
         // Birdpearson es recibido en la fiesta
 
-        System.out.println("\nLLega Birdpearson!\n" + 
-                             "==================");
+        System.out.println("\nLLega Birdpearson!\n" + "==================");
         CreditCard birdpearson = new CreditCard("Birdpearson", "1111111111111111");
         receptivo.dispatch(birdpearson);
         mostrarReserva(birdpearson, packExpender, ufosPark);
 
         // Morty intenta reserver un ovni y un pack pero no quedan
 
-        System.out.println("\nMorty quiere pack y ovni pero no quedan :(\n" + 
-                             "==========================================");
+        System.out.println("\nMorty quiere pack y ovni pero no quedan :(\n" + "==========================================");
         morty = new CreditCard("Morty", "0000000000000000");
         receptivo.dispatch(morty);
         mostrarReserva(morty, packExpender, ufosPark);
@@ -218,9 +197,8 @@ public class RicksyBusiness {
          * Hay 100 RickMenús y su precio es de 10 EZIs.
          * Muestra el total de pedidos y la lista de
          * invitados/as que han hecho un pedido.
-         */
-
-         // tu código aquí
+        */
+        // tu código aquí
     }
 
     private static void mostrarReserva(CreditCard card, CrystalExpender expender, UfosPark ufos) {
